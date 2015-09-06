@@ -1,0 +1,28 @@
+---
+
+- hosts: all
+  sudo: yes
+  roles:
+    # common
+    - franklinkim.apt
+    - franklinkim.ntp
+    - franklinkim.git
+    - franklinkim.ssh
+    - franklinkim.vim
+    - franklinkim.timezone
+    - franklinkim.environment
+    # databases
+    - Ansibles.mysql
+    # app
+    - franklinkim.apache2
+    # others
+    - franklinkim.files
+  tasks:
+    - name: switching ruby
+      shell: ruby-switch --set ruby1.8
+    - name: installing gems
+      gem:
+        name: "{{ item }}"
+        user_install: no
+        state: present
+      with_items: gems

@@ -1,0 +1,6 @@
+.*
+*~
+/build/
+/packer_cache/
+!.editorconfig
+!.git*

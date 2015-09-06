@@ -1,0 +1,58 @@
+{
+  "variables": {
+    "name": "rails-2.3",
+    "version": "1.0.0",
+    "home": "{{ env `HOME` }}",
+    "vagrant_cloud_user": "{{ env `VAGRANT_CLOUD_USER` }}",
+    "vagrant_cloud_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}"
+  },
+  "builders": [
+    {
+      "name": "ubuntu-trusty-vbox",
+      "type": "virtualbox-ovf",
+      "source_path": "{{ user `home` }}/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-trusty64/14.04/virtualbox/box.ovf",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "30s",
+      "vm_name": "{{user `name`}}",
+      "shutdown_command": "sudo -S shutdown -P now",
+      "headless": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "inline": [
+        "apt-get install software-properties-common",
+        "apt-add-repository ppa:ansible/ansible",
+        "apt-get update",
+        "apt-get -y install ansible"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_dir": "provisioning",
+      "command": "ansible-playbook -vv",
+      "group_vars": "provisioning/group_vars",
+      "playbook_file": "provisioning/playbook.yml"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "inline": [
+        "add-apt-repository --remove ppa:ansible/ansible",
+        "apt-get -y purge ansible",
+        "dd if=/dev/zero of=/EMPTY bs=1M",
+        "rm -f /EMPTY",
+        "sync"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "build/{{.BuildName}}-{{user `version`}}.box"
+    }
+  ]
+}

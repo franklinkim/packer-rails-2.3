@@ -1,0 +1,116 @@
+---
+
+##
+# apache2
+##
+apache2_modules:
+  - { id: ssl, state: present }
+  - { id: status, state: present }
+  - { id: filter, state: present }
+  - { id: headers, state: present }
+  - { id: expires, state: present }
+  - { id: rewrite, state: present }
+  - { id: passenger, state: present }
+apache2_server_name: localhost
+apache2_remove_default: yes
+##
+# apt
+##
+apt_keys:
+  - url: "http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x561F9B9CAC40B2F7"
+apt_repositories:
+  - "deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main"
+  - "ppa:brightbox/ruby-ng"
+apt_packages:
+  - build-essential
+  - ca-certificates
+  - curl
+  - htop
+  - imagemagick
+  - libxml2-dev
+  - libxslt-dev
+  - libmysqlclient-dev
+  - libapache2-mod-passenger
+  - ruby1.8
+  - ruby1.8-dev
+  - ruby-switch
+  - rubygems1.8
+  - tree
+  - unzip
+  - wget
+  - zip
+  - zlib1g-dev
+##
+# environment
+##
+environment_config:
+  LANG: en_US.UTF-8
+  LANGUAGE: en_US.UTF-8
+  LC_ALL: en_US.UTF-8
+##
+# files
+##
+files:
+  - path: /var/www
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: "2775"
+##
+# gems
+##
+gems:
+  - bundler
+##
+# git
+##
+git_config:
+  core:
+    editor: vim
+  color:
+    diff: auto
+    branch: auto
+    status: auto
+    interactive: auto
+  push:
+    default: matching
+##
+# mysql
+##
+mysql_root_password: ''
+##
+# ssh
+##
+ssh_known_hosts:
+  - github.com
+  - bitbucket.org
+##
+# timezone
+##
+timezone: 'Europe/Berlin'
+##
+# vim
+##
+vim_config:
+  - "set tabstop=2"
+  - "set shiftwidth=2"
+  - "set softtabstop=2"
+  - "set backspace=indent,eol,start"
+  - "set expandtab"
+  - "set autoindent"
+  - "set smartindent"
+  - "set smarttab"
+  - "set nonumber"
+  - "set ruler"
+  - "set showmatch"
+  - "set hlsearch"
+  - "set modeline"
+  - "set encoding=utf-8"
+  - "set paste"
+  - "set ignorecase"
+  - "set nobackup"
+  - "set noswapfile"
+  - "set autoread"
+  - "set smartcase"
+  - "set incsearch"
+  - "syntax enable"
