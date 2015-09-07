@@ -1,0 +1,33 @@
+[submodule "provisioning/roles/franklinkim.apt"]
+	path = provisioning/roles/franklinkim.apt
+	url = https://github.com/weareinteractive/ansible-apt.git
+[submodule "provisioning/roles/franklinkim.ntp"]
+	path = provisioning/roles/franklinkim.ntp
+	url = https://github.com/weareinteractive/ansible-ntp.git
+[submodule "provisioning/roles/franklinkim.git"]
+	path = provisioning/roles/franklinkim.git
+	url = https://github.com/weareinteractive/ansible-git.git
+[submodule "provisioning/roles/franklinkim.ssh"]
+	path = provisioning/roles/franklinkim.ssh
+	url = https://github.com/weareinteractive/ansible-ssh.git
+[submodule "provisioning/roles/franklinkim.vim"]
+	path = provisioning/roles/franklinkim.vim
+	url = https://github.com/weareinteractive/ansible-vim.git
+[submodule "provisioning/roles/franklinkim.timezone"]
+	path = provisioning/roles/franklinkim.timezone
+	url = https://github.com/weareinteractive/ansible-timezone.git
+[submodule "provisioning/roles/franklinkim.environment"]
+	path = provisioning/roles/franklinkim.environment
+	url = https://github.com/weareinteractive/ansible-environment.git
+[submodule "provisioning/roles/franklinkim.apache2"]
+	path = provisioning/roles/franklinkim.apache2
+	url = https://github.com/weareinteractive/ansible-apache2.git
+[submodule "provisioning/roles/franklinkim.files"]
+	path = provisioning/roles/franklinkim.files
+	url = https://github.com/weareinteractive/ansible-files.git
+[submodule "provisioning/library/sshknownhosts"]
+	path = provisioning/library/sshknownhosts
+	url = https://github.com/bfmartin/ansible-sshknownhosts.git
+[submodule "provisioning/roles/franklinkim.mysql"]
+	path = provisioning/roles/franklinkim.mysql
+	url = https://github.com/weareinteractive/ansible-mysql.git

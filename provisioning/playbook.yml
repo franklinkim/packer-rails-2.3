@@ -12,7 +12,7 @@
     - franklinkim.timezone
     - franklinkim.environment
     # databases
-    - Ansibles.mysql
+    - franklinkim.mysql
     # app
     - franklinkim.apache2
     # others
